@@ -1,8 +1,8 @@
 [
   {
-    "shop_name": "Taco Bell",
-    "taco_type": "Crunchwrap Supreme",
-    "rating": 7,
-    "comments": "So crunchy, so supreme."
+    "shop_name": "This is the title",
+    "comments": "this needs to be removed.",
+    "taco_type": "this needs to be removed",
+    "rating": 7
   }
 ]

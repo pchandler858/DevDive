@@ -1,7 +1,7 @@
 // import important parts of sequelize library
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes } = require("sequelize");
 // import our database connection from config.js
-const sequelize = require('../config/connection');
+const sequelize = require("../config/connection");
 
 // Initialize BlogPost model (table) by extending off Sequelize's Model class
 class BlogPost extends Model {}
@@ -26,7 +26,7 @@ BlogPost.init(
     },
     rating: {
       type: DataTypes.INTEGER,
-      allowNtull: false,
+      allowNull: false,
     },
     comments: {
       type: DataTypes.STRING,
@@ -35,8 +35,8 @@ BlogPost.init(
     user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'user',
-        key: 'id',
+        model: "user",
+        key: "id",
       },
     },
   },
@@ -45,7 +45,7 @@ BlogPost.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'blogpost',
+    modelName: "blogpost",
   }
 );
 

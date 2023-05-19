@@ -1,20 +1,10 @@
 // dependencies
-const router = require('express').Router();
-const { BlogPost, User } = require('../models');
-const withAuth = require('../utils/auth');
+const router = require("express").Router();
+const { BlogPost, User } = require("../models");
+const withAuth = require("../utils/auth");
 
 // Route to landing page
-router.get('/', (req, res) => {
-  try {
-    res.render('landing');
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-// Dashboard route
-// Maps blogposts to the dashboard
-router.get('/dashboard', withAuth, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     let blogData = await BlogPost.findAll({
       include: [
@@ -28,7 +18,31 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
     console.log(blogData);
 
-    res.render('dashboard', {
+    res.render("landing", {
+      blogData,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Dashboard route
+// Maps blogposts to the dashboard
+router.get("/dashboard", withAuth, async (req, res) => {
+  try {
+    let blogData = await BlogPost.findAll({
+      include: [
+        {
+          model: User,
+        },
+      ],
+    });
+
+    blogData = blogData.map((blogpost) => blogpost.get({ plain: true }));
+
+    console.log(blogData);
+
+    res.render("dashboard", {
       blogData,
       logged_in: req.session.logged_in,
     });
@@ -39,27 +53,27 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
 // Login route
 // If user is logged in, redirect to dashboard
-router.get('/login', (req, res) => {
+router.get("/login", (req, res) => {
   if (req.session.logged_in) {
-    res.redirect('/dashboard');
+    res.redirect("/dashboard");
     return;
   }
-  res.render('login');
+  res.render("login");
 });
 
 //Route to signp
-router.get('/signup', (req, res) => {
+router.get("/signup", (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/dashboard');
+    res.redirect("/dashboard");
     return;
   }
-  res.render('signup');
+  res.render("signup");
 });
 
 // Route to create a new post
-router.get('/newpost', (req, res) => {
-  res.render('newpost');
+router.get("/newpost", (req, res) => {
+  res.render("newpost");
 });
 
 module.exports = router;

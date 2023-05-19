@@ -1,45 +1,64 @@
-<body class='bg-gray-100 asada'>
-  <h1 class="space-mono font-bold text-slate-50 text-[2rem] py-0 px-4 rounded absolute top-4 left-4">TACO'D</h1>
-  <div class='min-h-screen flex items-center justify-center'>
-    <div class='bg-white p-8 rounded-lg shadow-md max-w-md w-full opacity-90'>
-      <h2 class='text-2xl font-bold mb-4'>Login</h2>
-      <form class='login-form'>
-        <div class='mb-4'>
-          <label for='email-login' class='block font-bold mb-2'>Email</label>
+<body class="bg-gray-100">
+  <nav class="flex justify-end pr-4 mt-8 space-x-4">
+    <a
+      href="/"
+      type="submit"
+      class="bg-white text-blue-600 font-bold py-3 px-6 rounded-lg border border-blue-600 hover:bg-blue-600 hover:text-white focus:outline-none focus:shadow-outline-blue"
+    >
+      Home
+    </a>
+    <a
+      href="/dashboard"
+      type="submit"
+      class="bg-white text-blue-600 font-bold py-3 px-6 rounded-lg border border-blue-600 hover:bg-blue-600 hover:text-white focus:outline-none focus:shadow-outline-blue"
+    >
+      Dashboard
+    </a>
+
+  </nav>
+  <h1
+    class="space-mono font-bold text-slate-50 text-[2rem] py-0 px-4 rounded absolute top-4 left-4"
+  >TACO'D</h1>
+  <div class="min-h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded-lg shadow-md max-w-md w-full opacity-90">
+      <h2 class="text-2xl font-bold mb-4">Login</h2>
+      <form class="login-form">
+        <div class="mb-4">
+          <label for="email-login" class="block font-bold mb-2">Email</label>
           <input
-            type='text'
-            id='email-login'
-            placeholder='Enter Username'
-            name='email'
+            type="text"
+            id="email-login"
+            placeholder="Enter Username"
+            name="email"
             required
-            class='w-full border border-gray-300 p-2 rounded-lg'
+            class="w-full border border-gray-300 p-2 rounded-lg"
           />
         </div>
-        <div class='mb-4'>
+        <div class="mb-4">
           <label
-            for='password-login'
-            class='block font-bold mb-2'
+            for="password-login"
+            class="block font-bold mb-2"
           >Password</label>
           <input
-            type='password'
-            id='password-login'
-            placeholder='Enter Password'
-            name='password'
+            type="password"
+            id="password-login"
+            placeholder="Enter Password"
+            name="password"
             required
-            class='w-full border border-gray-300 p-2 rounded-lg'
+            class="w-full border border-gray-300 p-2 rounded-lg"
           />
         </div>
-        <div class='flex justify-between'>
+        <div class="flex justify-between">
           <button
-            type='submit'
-            class='h-12 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+            type="submit"
+            class="h-12 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           >
             Login
           </button>
           <button
-            class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           >
-            <a href='/signup'>Sign up</a>
+            <a href="/signup">Sign up</a>
 
           </button>
         </div>
@@ -48,4 +67,4 @@
   </div>
 </body>
 
-<script src='/js/login.js'></script>
+<script src="/js/login.js"></script>
