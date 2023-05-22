@@ -13,12 +13,30 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="overflow-hidden">
-    <nav class="flex justify-end pr-4 mt-8 space-x-4">
-      <a href="/" class="text-blue-600 font-bold">Home</a>
-      <a href="/dashboard" class="text-blue-600 font-bold">Dashboard</a>
-      <a href="/login" class="text-blue-600 font-bold">Login</a>
-      <a href="#" id="logout" class="text-blue-600 font-bold">Logout</a>
-    </nav>
-    {{{body}}}
+    <div class="bg-gradient-to-r from-indigo-800 to-purple-900">
+      <div class="container mx-auto flex items-center justify-between p-4">
+        <h1 class="text-4xl text-white font-bold">Dev Dive</h1>
+        <nav class="flex space-x-4">
+          {{! If the user is logged in, show the logout button instead of the login button }}
+          {{#if loggedIn}}
+            <a href="/" class="text-white font-bold">Home</a>
+            <a href="/dashboard" class="text-white font-bold">Dashboard</a>
+
+            <a href="#" id="logout" class="text-white font-bold">Logout</a>
+          {{else}}
+            <a href="/" class="text-white font-bold">Home</a>
+            <a href="/dashboard" class="text-white font-bold">Dashboard</a>
+            <a
+              href="/login"
+              class="text-white font-bold"
+              id="nav-login"
+            >Login</a>
+          {{/if}}
+        </nav>
+      </div>
+    </div>
+    <div class="container mx-auto">
+      {{{body}}}
+    </div>
   </body>
 </html>

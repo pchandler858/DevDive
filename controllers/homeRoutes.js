@@ -5,6 +5,7 @@ const withAuth = require("../utils/auth");
 
 // Route to landing page
 router.get("/", async (req, res) => {
+  const loggedIn = req.session.logged_in || false;
   try {
     let blogData = await BlogPost.findAll({
       include: [
@@ -20,6 +21,7 @@ router.get("/", async (req, res) => {
 
     res.render("landing", {
       blogData,
+      loggedIn,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -29,6 +31,8 @@ router.get("/", async (req, res) => {
 // Dashboard route
 // Maps blogposts to the dashboard
 router.get("/dashboard", withAuth, async (req, res) => {
+  const loggedIn = req.session.logged_in || false; //
+
   try {
     let blogData = await BlogPost.findAll({
       include: [
@@ -45,6 +49,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
     res.render("dashboard", {
       blogData,
       logged_in: req.session.logged_in,
+      loggedIn,
     });
   } catch (err) {
     res.status(500).json(err);

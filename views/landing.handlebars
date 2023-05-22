@@ -1,67 +1,21 @@
 <body class="overflow-hidden">
-  {{! <nav class="flex justify-end pr-4 mt-8 space-x-4">
-    <a
-      href="/"
-      type="submit"
-      class="bg-white text-blue-600 font-bold py-3 px-6 rounded-lg border border-blue-600 hover:bg-blue-600 hover:text-white focus:outline-none focus:shadow-outline-blue"
-    >
-      Home
-    </a>
-    <a
-      href="/dashboard"
-      type="submit"
-      class="bg-white text-blue-600 font-bold py-3 px-6 rounded-lg border border-blue-600 hover:bg-blue-600 hover:text-white focus:outline-none focus:shadow-outline-blue"
-    >
-      Dashboard
-    </a>
-    <a
-      href="/login"
-      type="submit"
-      class="bg-white text-blue-600 font-bold py-3 px-6 rounded-lg border border-blue-600 hover:bg-blue-600 hover:text-white focus:outline-none focus:shadow-outline-blue"
-    >
-      Login
-    </a>
-    <button
-      id="logout"
-      class="bg-white text-blue-600 font-bold py-3 px-6 rounded-lg border border-blue-600 hover:bg-blue-600 hover:text-white focus:outline-none focus:shadow-outline-blue"
-    >
-      Logout
-    </button>
-  </nav> }}
 
   <div class="min-h-screen py-6 flex flex-col justify-center sm:py-12">
+    <h1>this is the home page</h1>
     {{#each blogData as |post|}}
-
-      {{!-- <div class="py-20 sm:max-w-xl sm:mx-auto">
-        <div
-          class="bg-white shadow-lg border-gray-100 max-h-80 border sm:rounded-3xl p-8 flex space-x-8"
-        >
-          <div class="h-48 overflow-visible w-1/2">
-            <img
-              class="rounded-3xl shadow-lg"
-              src="https://images.unsplash.com/photo-1627564803215-ad55bad5c5ea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-              alt=""
-            />
+      <div>
+        <article class="bg-white rounded-lg shadow-md mb-8 w-4/5 mx-auto">
+          <div
+            class="flex items-center justify-between bg-gray-800 px-4 py-2 rounded-t-lg"
+          >
+            <h2 class="text-xl font-bold text-white">{{post.post_title}}</h2>
+            <p class="text-gray-300 text-sm">Posted by User123 on May 22, 2023</p>
           </div>
-          <div class="flex flex-col w-1/2 space-y-4">
-            <div class="flex justify-between items-start">
-              <h2 class="font-mono text-3xl font-bold">{{post.shop_name}}</h2>
-              <div
-                id="rating"
-                class="bg-amber-300 font-bold rounded-xl p-2"
-              >{{post.rating}}</div>
-            </div>
-            <div>
-              <p
-                class="text-gray-400 max-h-40 overflow-y-hidden"
-              >{{post.comments}}</p>
-              <div
-                class="flex text-2xl font-bold text-a"
-              >{{post.taco_type}}</div>
-            </div>
+          <div class="p-4 pt-4">
+            <p class="text-gray-800">{{post.comments}}</p>
           </div>
-        </div>
-      </div> --}}
+        </article>
+      </div>
     {{/each}}
   </div>
   <script src="/js/logout.js"></script>
