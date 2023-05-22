@@ -1,7 +1,8 @@
 <body class="">
+
   <div class="min-h-screen py-6 flex flex-col justify-center sm:py-12">
     {{#each blogData as |post|}}
-      <div class="py-20 sm:max-w-xl sm:mx-auto">
+      {{!-- <div class="py-20 sm:max-w-xl sm:mx-auto">
         <div
           class="bg-white shadow-lg border-gray-100 max-h-80 border sm:rounded-3xl p-8 flex space-x-8"
         >
@@ -30,19 +31,25 @@
             </div>
           </div>
         </div>
+      </div> --}}
+      <div>
+        <article class="bg-white rounded-lg shadow-md mb-8 w-4/5 mx-auto">
+          <div
+            class="flex items-center justify-between bg-gray-800 px-4 py-2 rounded-t-lg"
+          >
+            <h2 class="text-xl font-bold text-white">{{post.post_title}}</h2>
+            <p class="text-gray-300 text-sm">Posted by User123 on May 22, 2023</p>
+          </div>
+          <div class="p-4 pt-4">
+            <p class="text-gray-800">{{post.comments}}</p>
+          </div>
+        </article>
       </div>
     {{/each}}
   </div>
-  <h1
-    class="space-mono font-bold text-slate-50 text-[2rem] py-0 px-4 rounded absolute top-4 left-4"
-  >TACO'D</h1>
-  <button
+  {{! <button
     id="newPost"
     class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-2 rounded absolute top-4 right-24"
-  ><a href="/newpost">Add Review</a></button>
-  <button
-    id="logout"
-    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded absolute top-4 right-2"
-  >Logout</button>
+  ><a href="/newpost">Add Review</a></button> }}
   <script src="/js/logout.js"></script>
 </body>

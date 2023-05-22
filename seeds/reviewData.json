@@ -1,8 +1,16 @@
 [
   {
     "shop_name": "This is the title",
-    "comments": "this needs to be removed.",
+    "comments": "this is the seeded comment",
     "taco_type": "this needs to be removed",
-    "rating": 7
+    "rating": 7,
+    "post_title": "this is the seeded title"
+  },
+  {
+    "shop_name": "This is the title2",
+    "comments": "this is the seeded comment2",
+    "taco_type": "this needs to be removed",
+    "rating": 7,
+    "post_title": "this is the seeded title"
   }
 ]
