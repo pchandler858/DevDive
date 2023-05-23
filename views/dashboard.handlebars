@@ -16,12 +16,14 @@
           </div>
           <div class="p-4 pt-4">
             <p class="text-gray-800">{{post.user_post}}</p>
-            <div class="mt-4">
+            <div class="mt-4 bg-gray-200">
               {{#if post.comments}}
-                <h3 class="text-lg font-semibold pt-3">Comments</h3>
-                <ul class="mt-2 space-y-4">
+                <div class="px-4">
+                  <h3 class="text-lg font-semibold pt-3">Comments</h3>
+                </div>
+                <ul class="mt-2 px-4 py-2 space-y-4">
                   {{#each post.comments}}
-                    <li class="border-t border-gray-200">
+                    <li class="border-t border-black">
                       <p class="text-gray-800 pt-2">{{this.comment_text}}</p>
                       <br />
                       <p class="text-gray-600 text-sm">-
