@@ -1,9 +1,9 @@
 // dependencies
-const sequelize = require('../config/connection');
-const { User, BlogPost } = require('../models');
+const sequelize = require("../config/connection");
+const { User, BlogPost } = require("../models");
 
-const userData = require('./userData.json');
-const reviewData = require('./reviewData.json');
+const userData = require("./userData.json");
+const reviewData = require("./reviewData.json");
 
 // Seeds the database
 const seedDatabase = async () => {

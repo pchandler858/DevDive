@@ -1,16 +1,27 @@
 [
   {
-    "shop_name": "This is the title",
-    "comments": "this is the seeded comment",
-    "taco_type": "this needs to be removed",
-    "rating": 7,
-    "post_title": "this is the seeded title"
+    "post_title": "This is the title1",
+    "user_post": "This is the user post1",
+    "user_name": "User123",
+    "post_time": "2023-05-22",
+    "comments": [
+      {
+        "comment_text": "This is comment 1 for post 1",
+        "comment_user": "User456",
+        "comment_time": "May 23, 2023"
+      },
+      {
+        "comment_text": "This is comment 2 for post 1",
+        "comment_user": "User789",
+        "comment_time": "May 24, 2023"
+      }
+    ]
   },
   {
-    "shop_name": "This is the title2",
-    "comments": "this is the seeded comment2",
-    "taco_type": "this needs to be removed",
-    "rating": 7,
-    "post_title": "this is the seeded title"
+    "post_title": "This is the title2",
+    "user_post": "This is the user post2",
+    "user_name": "User999",
+    "post_time": "2023-05-25",
+    "comments": []
   }
 ]
