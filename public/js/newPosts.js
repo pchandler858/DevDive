@@ -1,29 +1,3 @@
-// // Purpose: to create a new post
-// const newFormHandler = async (event) => {
-//   event.preventDefault();
-
-//   const { title: titleInput, post: postInput } = event.target.element;
-//   console.log(titleInput, postInput);
-//   const postData = { title: titleInput, post: postInput };
-
-//   fetch("/api/posts", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(postData),
-//   }).then((response) => {
-//     if (response.ok) {
-//       document.location.replace("/dashboard");
-//     } else {
-//       alert("Failed to create post");
-//     }
-//   });
-// };
-
-// document
-//   .querySelector(".new-post-form")
-//   .addEventListener("submit", newFormHandler);
 const newFormHandler = async (event) => {
   event.preventDefault();
 

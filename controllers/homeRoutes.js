@@ -1,5 +1,6 @@
 // dependencies
 const router = require("express").Router();
+const { comment } = require("postcss");
 const { BlogPost, User } = require("../models");
 const withAuth = require("../utils/auth");
 
@@ -18,15 +19,35 @@ router.get("/", async (req, res) => {
 
     blogData = blogData.map((post) => post.get({ plain: true }));
 
-    console.log(blogData);
+    console.log("cooool", blogData);
 
-    res.render("dashboard", {
+    res.render("landing", {
       blogData,
       loggedIn,
     });
   } catch (err) {
     res.status(500).json(err);
   }
+});
+
+// Login route
+// If user is logged in, redirect to dashboard
+router.get("/login", (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect("/dashboard");
+    return;
+  }
+  res.render("login");
+});
+
+//Route to signp
+router.get("/signup", (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.redirect("/dashboard");
+    return;
+  }
+  res.render("signup");
 });
 
 // Dashboard route
@@ -57,24 +78,45 @@ router.get("/dashboard", withAuth, async (req, res) => {
   }
 });
 
-// Login route
-// If user is logged in, redirect to dashboard
-router.get("/login", (req, res) => {
-  if (req.session.logged_in) {
-    res.redirect("/dashboard");
-    return;
-  }
-  res.render("login");
-});
+router.get("/dashboard/:id", withAuth, async (req, res) => {
+  const loggedIn = req.session.logged_in || false;
+  try {
+    let blogData = await BlogPost.findByPk(req.params.id, {
+      where: {
+        id: req.params.id,
+      },
+      include: [
+        {
+          model: User,
+          model: Comment,
+        },
+      ],
+    });
 
-//Route to signp
-router.get("/signup", (req, res) => {
-  // If the user is already logged in, redirect the request to another route
-  if (req.session.logged_in) {
-    res.redirect("/dashboard");
-    return;
+    blogData = blogData.get({ plain: true });
+
+    console.log(blogData);
+    let commentData = await Comment.findAll({
+      where: {
+        blog_id: req.params.id,
+      },
+      include: [
+        {
+          model: User,
+          model: BlogPost,
+        },
+      ],
+    });
+    commentData = commentData.map((comment) => comment.get({ plain: true }));
+    console.log(commentData);
+    res.render("post", {
+      blogData,
+      commentData,
+      loggedIn,
+    });
+  } catch (err) {
+    res.status(500).json(err);
   }
-  res.render("signup");
 });
 
 // Route to create a new post
