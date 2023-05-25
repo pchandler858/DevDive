@@ -78,7 +78,10 @@ router.get("/signup", (req, res) => {
 
 // Route to create a new post
 router.get("/newpost", (req, res) => {
-  res.render("newpost");
+  const loggedIn = req.session.logged_in || false;
+  res.render("newpost", {
+    loggedIn,
+  });
 });
 
 module.exports = router;

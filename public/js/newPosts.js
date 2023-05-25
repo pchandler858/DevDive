@@ -5,23 +5,19 @@ const newFormHandler = async (event) => {
   // Collect values from the form
   const shop_name = document.querySelector("#shop-name").value.trim();
   const taco_type = document.querySelector("#taco-type").value.trim();
-  const rating = document.querySelector("#rating").value.trim();
-  const comments = document.querySelector("#comments").value.trim();
+  // const rating = document.querySelector("#rating").value.trim();
+  // const comments = document.querySelector("#comments").value.trim();
 
   // Send a POST request to the API endpoint
-  if (shop_name && taco_type && rating && comments) {
+  if (shop_name && taco_type) {
     const response = await fetch(`/api/posts`, {
       method: "POST",
-      body: JSON.stringify({
-        comments,
-        post_title,
-        user_post,
-      }),
+      body: JSON.stringify({ shop_name, taco_type }),
       headers: {
         "Content-Type": "application/json",
       },
     });
-    console.log(response);
+    console.log("yoooooo", response);
     if (response.ok) {
       document.location.replace("/dashboard");
     } else {

@@ -39,6 +39,7 @@ BlogPost.init(
 
       // defaultValue: DataTypes.NOW,
     },
+
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
