@@ -1,29 +1,52 @@
-// Purpose: to create a new post
+// // Purpose: to create a new post
+// const newFormHandler = async (event) => {
+//   event.preventDefault();
+
+//   const { title: titleInput, post: postInput } = event.target.element;
+//   console.log(titleInput, postInput);
+//   const postData = { title: titleInput, post: postInput };
+
+//   fetch("/api/posts", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(postData),
+//   }).then((response) => {
+//     if (response.ok) {
+//       document.location.replace("/dashboard");
+//     } else {
+//       alert("Failed to create post");
+//     }
+//   });
+// };
+
+// document
+//   .querySelector(".new-post-form")
+//   .addEventListener("submit", newFormHandler);
 const newFormHandler = async (event) => {
   event.preventDefault();
 
-  // Collect values from the form
-  const shop_name = document.querySelector("#shop-name").value.trim();
-  const taco_type = document.querySelector("#taco-type").value.trim();
-  // const rating = document.querySelector("#rating").value.trim();
-  // const comments = document.querySelector("#comments").value.trim();
+  const { title: titleInput, post: postInput } = event.target.elements;
 
+  // Check if the values are defined
+
+  const postData = { title: titleInput, post: postInput };
   // Send a POST request to the API endpoint
-  if (shop_name && taco_type) {
-    const response = await fetch(`/api/posts`, {
-      method: "POST",
-      body: JSON.stringify({ shop_name, taco_type }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    console.log("yoooooo", response);
+  fetch("/api/posts", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(postData),
+  }).then((response) => {
     if (response.ok) {
+      console.log("made it to this point");
       document.location.replace("/dashboard");
     } else {
       alert("Failed to create post");
     }
-  }
+  });
 };
 
 document

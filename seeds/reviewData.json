@@ -1,7 +1,7 @@
 [
   {
-    "post_title": "This is the title1",
-    "user_post": "This is the user post1",
+    "title": "This is the title1",
+    "post": "This is the user post1",
     "user_name": "User123",
     "post_time": "2023-05-22",
     "comments": [
@@ -18,8 +18,8 @@
     ]
   },
   {
-    "post_title": "This is the title2",
-    "user_post": "This is the user post2",
+    "title": "This is the title2",
+    "post": "This is the user post2",
     "user_name": "User999",
     "post_time": "2023-05-25",
     "comments": []

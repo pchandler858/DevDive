@@ -3,7 +3,7 @@ const router = require("express").Router();
 const { BlogPost, User } = require("../models");
 const withAuth = require("../utils/auth");
 
-// Route to landing page
+// Route to home page
 router.get("/", async (req, res) => {
   const loggedIn = req.session.logged_in || false;
   try {
@@ -11,15 +11,16 @@ router.get("/", async (req, res) => {
       include: [
         {
           model: User,
+          attributes: ["name"],
         },
       ],
     });
 
-    blogData = blogData.map((blogpost) => blogpost.get({ plain: true }));
+    blogData = blogData.map((post) => post.get({ plain: true }));
 
     console.log(blogData);
 
-    res.render("landing", {
+    res.render("dashboard", {
       blogData,
       loggedIn,
     });
@@ -42,7 +43,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
       ],
     });
 
-    blogData = blogData.map((blogpost) => blogpost.get({ plain: true }));
+    blogData = blogData.map((post) => post.get({ plain: true }));
 
     console.log(blogData);
 
@@ -77,11 +78,23 @@ router.get("/signup", (req, res) => {
 });
 
 // Route to create a new post
-router.get("/newpost", (req, res) => {
+router.get("/newpost", async (req, res) => {
   const loggedIn = req.session.logged_in || false;
-  res.render("newpost", {
-    loggedIn,
-  });
+  try {
+    let userData = await User.findOne({
+      where: {
+        id: req.session.user_id,
+      },
+    });
+    userData = userData.get({ plain: true });
+    res.render("newpost", {
+      loggedIn,
+      userData,
+      url: req.originalUrl,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;

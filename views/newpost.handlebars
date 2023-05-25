@@ -1,15 +1,15 @@
 <body class="bg-gray-100">
   <div class="mt-4 min-h-screen flex items-center justify-center">
     <div class="bg-white p-8 rounded-lg shadow-md max-w-md w-full opacity-90">
-      <h2 class="text-2xl font-bold mb-4">Add Review</h2>
+      <h2 class="text-2xl font-bold mb-4">Add Post</h2>
       <form class="new-post-form">
         <div class="mb-4">
-          <label class="block font-bold mb-2">Restaurant Name</label>
+          <label class="block font-bold mb-2">Post Title</label>
           <input
             type="text"
-            id="shop-name"
-            placeholder="Enter restaurant name"
-            name="restaurant-name"
+            {{!-- id="title" --}}
+            placeholder="Enter your post title"
+            name="title"
             required
             class="w-full border border-gray-300 p-2 rounded-lg"
           />
@@ -17,9 +17,9 @@
         <div class="mb-4">
           <label class="block font-bold mb-2">Comments</label>
           <textarea
-            id="taco-type"
-            placeholder="Enter your comments"
-            name="comments"
+            {{!-- id="post" --}}
+            placeholder="Enter your post"
+            name="post"
             required
             class="w-full border border-gray-300 p-2 rounded-lg"
           ></textarea>
