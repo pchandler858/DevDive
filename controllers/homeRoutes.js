@@ -1,7 +1,6 @@
 // dependencies
 const router = require("express").Router();
-const { comment } = require("postcss");
-const { BlogPost, User } = require("../models");
+const { BlogPost, User, Comment } = require("../models");
 const withAuth = require("../utils/auth");
 
 // Route to home page
@@ -14,12 +13,19 @@ router.get("/", async (req, res) => {
           model: User,
           attributes: ["name"],
         },
+        {
+          model: Comment,
+          include: [
+            {
+              model: User,
+              attributes: ["name"],
+            },
+          ],
+        },
       ],
     });
 
     blogData = blogData.map((post) => post.get({ plain: true }));
-
-    console.log("cooool", blogData);
 
     res.render("landing", {
       blogData,
@@ -121,18 +127,18 @@ router.get("/dashboard/:id", withAuth, async (req, res) => {
 
 // Route to create a new post
 router.get("/newpost", async (req, res) => {
-  const loggedIn = req.session.logged_in || false;
+  // const loggedIn = req.session.logged_in || false;
   try {
-    let userData = await User.findOne({
-      where: {
-        id: req.session.user_id,
-      },
+    let userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ["password"] },
+      include: [{ model: BlogPost }],
     });
+
     userData = userData.get({ plain: true });
+    
     res.render("newpost", {
-      loggedIn,
-      userData,
-      url: req.originalUrl,
+      // loggedIn,
+      ...userData,
     });
   } catch (err) {
     res.status(500).json(err);

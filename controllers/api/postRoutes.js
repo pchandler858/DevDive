@@ -1,11 +1,10 @@
 // dependencies
 const router = require("express").Router();
-const { BlogPost } = require("../../models");
+const { BlogPost, Comment } = require("../../models");
 // const withAuth = require("../../utils/auth");
 
 // Route to create a new post
 router.post("/", async (req, res) => {
-  console.log("yo", req.body);
   try {
     const newPost = await BlogPost.create({
       ...req.body,
@@ -18,14 +17,35 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.get("/:id", async (req, res) => {
+  try {
+    const postData = await BlogPost.findByPk(req.params.id, {
+      include: [
+        {
+          model: Comment,
+        },
+      ],
+    });
+    res.status(200).json(postData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 // Route to update a post
 router.put("/:id", async (req, res) => {
   try {
-    const postData = await BlogPost.update(req.body, {
-      where: {
-        id: req.params.id,
+    const postData = await BlogPost.update(
+      {
+        title: req.body.title,
+        post: req.body.post,
       },
-    });
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    );
     res.status(200).json(postData);
   } catch (err) {
     res.status(400).json(err);

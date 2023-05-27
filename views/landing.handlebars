@@ -1,4 +1,4 @@
-<body class="overflow-hidden">
+<body class="">
   <div class="min-h-screen py-6 flex flex-col sm:py-12">
     {{#each blogData as |post|}}
       <div>
@@ -17,12 +17,12 @@
           <div class="p-4 pt-4">
             <p class="text-gray-800">{{post.post}}</p>
             <div class="mt-4 bg-gray-200">
-              {{#if post.comments}}
-                <div class="px-4">
-                  <h3 class="text-lg font-semibold pt-3">Comments</h3>
-                </div>
-                <ul class="mt-2 px-4 py-2 space-y-4">
-                  {{#each post.comments}}
+              {{#each post.comments as |comment|}}
+                {{#if comment.comments}}
+                  <div class="px-4">
+                    <h3 class="text-lg font-semibold pt-3">Comments</h3>
+                  </div>
+                  <ul class="mt-2 px-4 py-2 space-y-4">
                     <li class="border-t border-black">
                       <p class="text-gray-800 pt-2">{{this.comment_text}}</p>
                       <br />
@@ -31,9 +31,9 @@
                         on
                         {{this.comment_time}}</p>
                     </li>
-                  {{/each}}
-                </ul>
-              {{/if}}
+                  </ul>
+                {{/if}}
+              {{/each}}
             </div>
           </div>
         </article>

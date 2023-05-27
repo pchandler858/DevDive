@@ -7,7 +7,7 @@
           <label class="block font-bold mb-2">Post Title</label>
           <input
             type="text"
-            {{!-- id="title" --}}
+            id="title"
             placeholder="Enter your post title"
             name="title"
             required
@@ -15,14 +15,15 @@
           />
         </div>
         <div class="mb-4">
-          <label class="block font-bold mb-2">Comments</label>
-          <textarea
-            {{!-- id="post" --}}
+          <label for="post" class="block font-bold mb-2">Comments</label>
+          <input
+            id="post"
+            type="text"
             placeholder="Enter your post"
             name="post"
             required
             class="w-full border border-gray-300 p-2 rounded-lg"
-          ></textarea>
+          ></input>
         </div>
         <button
           type="submit"

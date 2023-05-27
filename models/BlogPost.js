@@ -20,8 +20,8 @@ BlogPost.init(
       allowNull: false,
     },
     post_time: {
-      type: DataTypes.DATEONLY,
-      allowNull: false,
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
     },
     user_id: {
       type: DataTypes.INTEGER,
@@ -35,7 +35,7 @@ BlogPost.init(
     sequelize,
     timestamps: false,
     freezeTableName: true,
-    // underscored: true,
+    underscored: true,
     modelName: "post",
   }
 );
