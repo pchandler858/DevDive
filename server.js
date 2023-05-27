@@ -25,7 +25,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 const sess = {
   secret: "Super secret secret",
   cookie: {
-    maxAge: 300000,
+    maxAge: 900000, // 15 minutes
     httpOnly: true,
     secure: false,
     sameSite: "strict",
