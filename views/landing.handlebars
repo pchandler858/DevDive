@@ -62,4 +62,14 @@
       {{/each}}
   </div>
   <script src="/js/logout.js"></script>
+  {{#if loggedIn}}
+  <script>
+    window.onload = function() {
+      if (!sessionStorage.getItem('alertDisplayed')) {
+        alert(`You can click the "+" icon to add a comment to a post.`);
+        sessionStorage.setItem('alertDisplayed', 'true');
+      }
+    }
+  </script>
+  {{/if}}
 </body>
