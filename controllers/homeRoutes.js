@@ -147,4 +147,27 @@ router.get("/newpost", async (req, res) => {
   }
 });
 
+// route to render the edit post page
+router.get("/editpost/:id", async (req, res) => {
+  try {
+    let blogData = await BlogPost.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ["name"],
+        },
+      ],
+    });
+
+    blogData = blogData.get({ plain: true });
+    console.log(blogData);
+
+    res.render("editpost", {
+      ...blogData,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

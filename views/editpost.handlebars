@@ -1,0 +1,44 @@
+<body class="bg-gray-100">
+  <div class="mt-4 min-h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded-lg shadow-md max-w-md w-full opacity-90">
+      <h2 class="text-2xl font-bold mb-4">Edit Post</h2>
+      <form class="edit-post" data-id="{{id}}">
+        <div class="mb-4">
+          <label class="block font-bold mb-2">Post Title</label>
+          <input
+            type="text"
+            id="post-title"
+            placeholder="Enter your post title"
+            name="title"
+            required
+            class="w-full border border-gray-300 p-2 rounded-lg"
+            value="{{title}}"
+          />
+        </div>
+        <div class="mb-4">
+          <label for="post" class="block font-bold mb-2">Post</label>
+          <textarea
+            id="post-body"
+            type="text"
+            rows="4"
+            placeholder="Enter your post"
+            name="post"
+            required
+            class="w-full border border-gray-300 p-2 rounded-lg"
+          >{{post}}</textarea>
+        </div>
+        <button
+          type="submit"
+          id=""
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Update Post
+        </button>
+      </form>
+      <div class="mt-4 text-sm text-gray-600">
+        <a href="/dashboard" class="text-blue-500">Back to Dashboard</a>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="/js/editPost.js"></script>

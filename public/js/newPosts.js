@@ -17,7 +17,7 @@ const newFormHandler = async (event) => {
     console.log("Response Status Text:", response.statusText);
 
     if (response.ok) {
-      document.location.replace("/");
+      document.location.replace("/dashboard");
     } else {
       const responseBody = await response.json();
       console.log("Response Body:", responseBody);

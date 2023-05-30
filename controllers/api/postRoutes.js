@@ -17,6 +17,17 @@ router.post("/", async (req, res) => {
   }
 });
 
+// route to render the edit post page
+router.get("/edit/:id", async (req, res) => {
+  try {
+    const postData = await BlogPost.findByPk(req.params.id);
+    res.render("editpost", { postData });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+// Route to get a single post
 router.get("/:id", async (req, res) => {
   try {
     const postData = await BlogPost.findByPk(req.params.id, {
