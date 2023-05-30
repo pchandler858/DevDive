@@ -23,6 +23,7 @@ router.get("/", async (req, res) => {
           ],
         },
       ],
+      order: [["post_date", "desc"]],
     });
 
     blogData = blogData.map((post) => post.get({ plain: true }));
@@ -135,7 +136,7 @@ router.get("/newpost", async (req, res) => {
     });
 
     userData = userData.get({ plain: true });
-    
+
     res.render("newpost", {
       // loggedIn,
       ...userData,
