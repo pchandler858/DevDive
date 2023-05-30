@@ -1,116 +1,48 @@
 <body class="">
-  <div class="min-h-screen py-6 flex flex-col sm:py-12">
+  <div class="min-h-screen py-6 flex flex-col">
+    <div class="mx-auto max-w-2xl mb-4">
+      <button
+        id="newPost"
+        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+      >
+        <a href="/newpost">New Post</a>
+      </button>
+    </div>
+
     {{#each blogData as |post|}}
-      <div>
-        <article
-          class="bg-white rounded-lg shadow-md mb-8 lg:w-full w-11/12 mx-auto"
+      <div class="flex items-center mb-8">
+        <div
+          class="flex p-2.5 bg-green-500 rounded-xl hover:rounded-3xl hover:bg-yellow-600 transition-all duration-300 text-white"
         >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+            />
+          </svg>
+        </div>
+        <div class="ml-4 flex-grow">
           <div
-            class="flex items-center justify-between bg-gray-800 px-4 py-2 rounded-t-lg"
+            class="flex items-center justify-between bg-gray-800 px-4 py-4 rounded-lg w-full"
+            id="postTitleBar"
           >
             <h2 class="text-xl font-bold text-white">{{post.title}}</h2>
-            <p class="text-gray-300 text-sm">Posted by
-              {{post.user.name}}
-              on
-              {{format_date post.post_date}}</p>
+            <p class="text-gray-300 text-sm">
+              {{format_date post.post_date}}
+            </p>
           </div>
-          <div class="p-4 pt-4">
-            <p class="text-gray-800">{{post.post}}</p>
-            <div class="mt-4 bg-gray-200">
-              {{#if post.comments}}
-                <div class="px-4">
-                  <h3 class="text-lg font-semibold pt-3">Comments</h3>
-                </div>
-                <ul class="mt-2 px-4 py-2 space-y-4">
-                  {{#each post.comments}}
-                    <li class="border-t border-black">
-                      <p class="text-gray-800 pt-2">{{this.comment_text}}</p>
-                      <br />
-                      <p class="text-gray-600 text-sm">-
-                        {{this.comment_user}}
-                        on
-                        {{this.comment_date}}</p>
-                    </li>
-                  {{/each}}
-                </ul>
-              {{/if}}
-            </div>
-          </div>
-        </article>
+          <!-- Rest of the article content -->
+        </div>
       </div>
     {{/each}}
   </div>
   <script src="/js/logout.js"></script>
 </body>
-
-{{!-- <body class="">
-  <div class="min-h-screen py-6 flex flex-col sm:py-12">
-    {{#each blogData as |post|}}
-      <div>
-        <article class="bg-white rounded-lg shadow-md mb-8 w-4/5 mx-auto">
-          <div
-            class="flex items-center justify-between bg-gray-800 px-4 py-2 rounded-t-lg"
-          >
-            <h2 class="text-xl font-bold text-white">{{post.post_title}}</h2>
-            <p class="text-gray-300 text-sm">Posted by User123 on May 22, 2023</p>
-          </div>
-          <div class="p-4 pt-4">
-            <p class="text-gray-800">{{post.user_post}}</p>
-            <div class="mt-4">
-              {{#if post.comments}}
-                <h3 class="text-lg font-semibold">Comments</h3>
-                <ul class="mt-2 space-y-4">
-                  {{#each post.comments}}
-                    <li class="border-t border-gray-200">
-                      <p class="text-gray-800">{{this}}</p>
-                    </li>
-                  {{/each}}
-                </ul>
-              {{/if}}
-            </div>
-          </div>
-        </article>
-      </div>
-    {{/each}}
-  </div>
-  <script src="/js/logout.js"></script>
-</body> --}}
-
-{{!-- <body class="">
-  <div class="min-h-screen py-6 flex flex-col sm:py-12">
-    <h1>This is the dashboard</h1>
-    {{#each blogData as |post|}}
-      <div>
-        <article class="bg-white rounded-lg shadow-md mb-8 w-4/5 mx-auto">
-          <div class="flex items-center justify-between bg-gray-800 px-4 py-2 rounded-t-lg">
-            <h2 class="text-xl font-bold text-white">{{post.post_title}}</h2>
-            <p class="text-gray-300 text-sm">Posted by User123 on May 22, 2023</p>
-          </div>
-          <div class="p-4 pt-4">
-            <p class="text-gray-800">{{post.comments}}</p>
-            <div class="mt-4">
-              <h3 class="text-lg font-semibold">Comments</h3>
-              <ul class="mt-2 space-y-4">
-                {{#each post.comments as |comment|}}
-                  <li class="border-t border-gray-200">
-                    <p class="text-gray-800">{{comment}}</p>
-                  </li>
-                {{/each}}
-              </ul>
-              <form class="mt-4">
-                <textarea rows="4" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" placeholder="Leave a comment"></textarea>
-                <button type="submit" class="mt-2 inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-xs text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">Post Comment</button>
-              </form>
-            </div>
-          </div>
-        </article>
-      </div>
-    {{/each}}
-  </div>
-  <script src="/js/logout.js"></script>
-</body> --}}
-
-{{! <button
-    id="newPost"
-    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-2 rounded absolute top-4 right-24"
-  ><a href="/newpost">Add Review</a></button> }}
