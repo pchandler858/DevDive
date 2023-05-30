@@ -58,7 +58,6 @@ router.get("/signup", (req, res) => {
 });
 
 // Dashboard route
-// Maps blogposts to the dashboard
 router.get("/dashboard", withAuth, async (req, res) => {
   const loggedIn = req.session.logged_in || false; //
 
@@ -69,6 +68,8 @@ router.get("/dashboard", withAuth, async (req, res) => {
           model: User,
         },
       ],
+      where: { user_id: req.session.user_id }, // only show posts by logged in user
+      order: [["post_date", "desc"]], // order by most recent
     });
 
     blogData = blogData.map((post) => post.get({ plain: true }));

@@ -5,8 +5,6 @@ const session = require("express-session");
 const exphbs = require("express-handlebars");
 const routes = require("./controllers");
 const helpers = require("./utils/helpers");
-// const authMiddleware = require("./middleware/authMiddleware");
-
 // sequelize connection
 const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
@@ -29,7 +27,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 const sess = {
   secret: "Super secret secret",
   cookie: {
-    maxAge: 900000, // 15 minutes
+    maxAge: 300000, // 5 minutes
     httpOnly: true,
     secure: false,
     sameSite: "strict",
@@ -41,18 +39,29 @@ const sess = {
   }),
 };
 
-app.use(session(sess));
+// Resets session timer on user activity
+const resetSessionTimer = (req, res, next) => {
+  const activityListener = () => {
+    req.session.touch(); // Reset session timer
+  };
+  req.on("mousemove", activityListener); // Listen for mouse movement
+  req.on("keydown", activityListener); // Listen for keyboard movement
+  req.on("scroll", activityListener); // Listen for scrolling
+  req.on("click", activityListener); // Listen for mouse clicks
+
+  next();
+};
 
 // Inform Express.js on which template engine to use
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
-// add authMiddleware
-// app.use(authMiddleware);
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
+
+app.use(session(sess)); // Use session
+app.use(resetSessionTimer); // Reset session timer on user activity
 
 app.use(routes);
 
