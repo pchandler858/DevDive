@@ -170,4 +170,6 @@ router.get("/editpost/:id", async (req, res) => {
   }
 });
 
+// rout to 
+
 module.exports = router;
