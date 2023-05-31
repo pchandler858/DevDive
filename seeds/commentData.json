@@ -1,20 +1,26 @@
 [
   {
     "comment_text": "This is a great post!",
-    "date_created": "2023-05-20T12:34:56Z",
+    "date_created": "2023-05-22",
     "user_id": 1,
     "blogpost_id": 1
   },
   {
     "comment_text": "I have a question about this topic.",
-    "date_created": "2023-05-21T10:11:12Z",
+    "date_created": "2023-05-22",
     "user_id": 2,
     "blogpost_id": 1
   },
   {
     "comment_text": "Thanks for sharing this information.",
-    "date_created": "2023-05-22T08:09:10Z",
+    "date_created": "2023-05-22",
     "user_id": 3,
+    "blogpost_id": 2
+  },
+  {
+    "comment_text": "I enjoyed reading this post.",
+    "date_created": "2023-05-22",
+    "user_id": 1,
     "blogpost_id": 2
   }
 ]
