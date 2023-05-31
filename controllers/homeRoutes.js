@@ -86,7 +86,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
   }
 });
 
-router.get("/dashboard/:id", withAuth, async (req, res) => {
+router.get("/post/:id", withAuth, async (req, res) => {
   const loggedIn = req.session.logged_in || false;
   try {
     let blogData = await BlogPost.findByPk(req.params.id, {
@@ -96,31 +96,15 @@ router.get("/dashboard/:id", withAuth, async (req, res) => {
       include: [
         {
           model: User,
-          model: Comment,
+          attributes: ["name"],
         },
       ],
     });
 
     blogData = blogData.get({ plain: true });
 
-    console.log(blogData);
-    let commentData = await Comment.findAll({
-      where: {
-        blog_id: req.params.id,
-      },
-      include: [
-        {
-          model: User,
-          model: BlogPost,
-        },
-      ],
-    });
-    commentData = commentData.map((comment) => comment.get({ plain: true }));
-    console.log(commentData);
-    res.render("post", {
-      blogData,
-      commentData,
-      loggedIn,
+    res.render("comment", {
+      ...blogData,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -170,6 +154,6 @@ router.get("/editpost/:id", async (req, res) => {
   }
 });
 
-// rout to 
+// rout to
 
 module.exports = router;

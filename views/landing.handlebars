@@ -18,37 +18,35 @@
             </div>
             <p class="text-gray-300 text-sm">Posted by {{post.user.name}} on {{format_date post.post_date}}</p>
           </div>
-
           <div class="p-4 pt-4">
             <p class="text-gray-800">{{post.post}}</p>
-
             {{!-- comments --}}
             {{#if post.comments}}
-<div class="mt-4 bg-gray-200 px-4 py-4 rounded-lg">
-  <h3 class="text-lg font-semibold pb-1">Comments</h3>
-  <ul class="mt-2 space-y-4">
-    {{#each post.comments as |comment|}}
-      <li class="border-t border-black bg-gray-100 rounded-lg p-4">
-        <div class="flex items-center">
-          <div class="bg-gray-300 rounded-full w-8 h-8 flex items-center justify-center">
-            <svg class="h-5 w-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-              <path
-                fill-rule="evenodd"
-                d="M10 3.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM2 9a7 7 0 1114 0v6a2 2 0 01-2 2H4a2 2 0 01-2-2V9zm2 0a5 5 0 0110 0v6a1 1 0 01-1 1H5a1 1 0 01-1-1V9zm3 4a1 1 0 100-2 1 1 0 000 2zm4 0a1 1 0 100-2 1 1 0 000 2z"
-                clip-rule="evenodd"
-              />
-            </svg>
-          </div>
-          <div class="ml-2">
-            <p class="text-gray-800">{{comment.comment_text}}</p>
-            <p class="text-gray-600 text-sm">- {{comment.user.name}} on {{ format_date comment.date_created}}</p>
-          </div>
-        </div>
-      </li>
-    {{/each}}
-  </ul>
-</div>
-          {{/if}}
+              <div class="mt-4 bg-gray-200 px-4 py-4 rounded-lg">
+                <h3 class="text-lg font-semibold pb-1">Comments</h3>
+                <ul class="mt-2 space-y-4">
+                  {{#each post.comments as |comment|}}
+                    <li class="border-t border-black bg-gray-100 rounded-lg p-4">
+                      <div class="flex items-center">
+                        <div class="bg-gray-300 rounded-full w-8 h-8 flex items-center justify-center">
+                          <svg class="h-5 w-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                              fill-rule="evenodd"
+                              d="M10 3.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM2 9a7 7 0 1114 0v6a2 2 0 01-2 2H4a2 2 0 01-2-2V9zm2 0a5 5 0 0110 0v6a1 1 0 01-1 1H5a1 1 0 01-1-1V9zm3 4a1 1 0 100-2 1 1 0 000 2zm4 0a1 1 0 100-2 1 1 0 000 2z"
+                              clip-rule="evenodd"
+                            />
+                          </svg>
+                        </div>
+                        <div class="ml-2">
+                          <p class="text-gray-800">{{comment.comment_text}}</p>
+                          <p class="text-gray-600 text-sm">- {{comment.user.name}} on {{ format_date comment.date_created}}</p>
+                        </div>
+                      </div>
+                    </li>
+                  {{/each}}
+                </ul>
+              </div>
+            {{/if}}
           </div>
         </article>
       </div>
