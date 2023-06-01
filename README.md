@@ -31,7 +31,7 @@ As a developer who writes about tech, I want a CMS-style blog site so that I can
 
 To install and run the project locally, follow these steps:
 
-1. Clone the GitHub repository: [repository URL]
+1. Clone the GitHub repository
 2. Install the necessary dependencies by running the command: `npm install`
 3. Set up the database configuration by creating a `.env` file and adding the required environment variables.
 4. Run the application using the command: `npm start`
