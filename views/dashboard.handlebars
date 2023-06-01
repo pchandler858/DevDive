@@ -25,7 +25,7 @@
               {{! edit post button }}
               <a href="/editpost/{{post.id}}">
                 <div
-                  class="delete-post flex p-2.5 bg-green-500 rounded-xl hover:rounded-3xl hover:bg-yellow-600 transition-all duration-300 text-white mr-2"
+                  class="delete-post flex p-2.5 bg-green-500 rounded-xl hover:rounded-3xl hover:bg-yellow-600 transition-all duration-300 text-slate-100 mr-2"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +44,9 @@
                 </div>
               </a>
               {{! end edit post button }}
-              <h2 class="text-xl font-bold text-white ml-2">{{post.title}}</h2>
+              <h2
+                class="text-xl font-bold text-slate-100 ml-2"
+              >{{post.title}}</h2>
             </div>
             <p class="text-gray-300 text-sm">{{format_date post.post_date}}</p>
           </div>
