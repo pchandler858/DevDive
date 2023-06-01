@@ -5,6 +5,7 @@ const newCommentHandler = async (event) => {
   const comment_text = document.querySelector("#comment-text").value.trim();
 
   if (comment_text) {
+    console.log("comment_text: ", comment_text);
     const id = event.target.getAttribute("data-id");
     const response = await fetch(`/api/comments/${id}`, {
       method: "POST",
@@ -14,7 +15,10 @@ const newCommentHandler = async (event) => {
       },
     });
 
+    console.log(response);
+
     if (response.ok) {
+      console.log("Comment posted");
       document.location.replace(`/`);
     } else {
       alert("Failed to post comment");
@@ -23,5 +27,5 @@ const newCommentHandler = async (event) => {
 };
 
 document
-  .querySelector(".new-comment")
+  .querySelector(".comment-form")
   .addEventListener("submit", newCommentHandler);

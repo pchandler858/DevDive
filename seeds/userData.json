@@ -1,7 +1,27 @@
 [
-    {
-        "name": "Matt Rhodes",
-        "email": "rhodemc@gmail.com",
-        "password": "password12345"
-    }
+  {
+    "name": "John Doe",
+    "email": "johndoe@example.com",
+    "password": "pass123"
+  },
+  {
+    "name": "Jane Smith",
+    "email": "janesmith@example.com",
+    "password": "abc456"
+  },
+  {
+    "name": "Mike Johnson",
+    "email": "mikejohnson@example.com",
+    "password": "secure789"
+  },
+  {
+    "name": "Emily Brown",
+    "email": "emilybrown@example.com",
+    "password": "password123"
+  },
+  {
+    "name": "David Wilson",
+    "email": "davidwilson@example.com",
+    "password": "qwerty789"
+  }
 ]

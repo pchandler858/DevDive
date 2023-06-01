@@ -105,6 +105,7 @@ router.get("/post/:id", withAuth, async (req, res) => {
 
     res.render("comment", {
       ...blogData,
+      loggedIn,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -113,7 +114,7 @@ router.get("/post/:id", withAuth, async (req, res) => {
 
 // Route to create a new post
 router.get("/newpost", async (req, res) => {
-  // const loggedIn = req.session.logged_in || false;
+  const loggedIn = req.session.logged_in || false;
   try {
     let userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ["password"] },
@@ -123,8 +124,8 @@ router.get("/newpost", async (req, res) => {
     userData = userData.get({ plain: true });
 
     res.render("newpost", {
-      // loggedIn,
       ...userData,
+      loggedIn,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -133,6 +134,7 @@ router.get("/newpost", async (req, res) => {
 
 // route to render the edit post page
 router.get("/editpost/:id", async (req, res) => {
+  const loggedIn = req.session.logged_in || false;
   try {
     let blogData = await BlogPost.findByPk(req.params.id, {
       include: [
@@ -148,12 +150,11 @@ router.get("/editpost/:id", async (req, res) => {
 
     res.render("editpost", {
       ...blogData,
+      loggedIn,
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
-
-// rout to
 
 module.exports = router;

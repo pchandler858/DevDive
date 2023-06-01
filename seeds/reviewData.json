@@ -1,14 +1,14 @@
 [
   {
-    "title": "This is the title1",
-    "post": "This is the user post1",
-    "user_name": "User123",
-    "post_date": "2023-05-22"
+    "title": "The Future of Artificial Intelligence",
+    "post": "Artificial Intelligence (AI) is rapidly advancing and shaping our world.",
+    "user_name": "John Doe",
+    "post_date": "2023-05-25"
   },
   {
-    "title": "This is the title2",
-    "post": "This is the user post2",
-    "user_name": "User999",
-    "post_date": "2023-05-25"
+    "title": "The Rise of Blockchain Technology",
+    "post": "Blockchain technology has gained significant attention in recent years.",
+    "user_name": "Jane Smith",
+    "post_date": "2023-05-28"
   }
 ]
