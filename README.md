@@ -51,4 +51,8 @@ The project utilizes the following technologies:
 
 ## Deployment
 
-The application is deployed on Heroku and can be accessed at [
+The application is deployed on Heroku and can be accessed here [DevDive](https://devdive.herokuapp.com/)
+
+## Screenshot
+
+![App Screenshot](assets/screenshot.png)
